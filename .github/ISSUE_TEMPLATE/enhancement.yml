@@ -1,0 +1,45 @@
+name: Small enhancement / good first issue
+description: Suggest an enhancement or propose a beginner-friendly improvement for the website
+title: '[Enhancement]: '
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > **Note:** This repository is for the **ODE website** (`OpenDataEnsemble/website`).
+        > For features and improvements to Formulus, Synkronus, ODE Desktop, or the CLI, please visit the [main ODE monorepo](https://github.com/OpenDataEnsemble/ode/issues).
+        >
+        > Want to work on this? Check out the README's [Run locally](https://github.com/OpenDataEnsemble/website#run-locally) section to get started.
+
+  - type: input
+    id: page
+    attributes:
+      label: Page or component
+      description: What part of the website does this enhancement apply to?
+      placeholder: e.g. Footer, /about, navigation, documentation links
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed enhancement
+      description: What would you like to see improved or added?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and motivation
+      description: Why is this change useful and who benefits?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contributor-tags
+    attributes:
+      label: Contributor tags
+      description: Could this be a good starting task for a new contributor?
+      options:
+        - label: Good first issue (suitable for new contributors to pick up)

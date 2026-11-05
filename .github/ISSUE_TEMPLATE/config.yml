@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: ODE Monorepo (Core Tools, Server & Apps)
+    url: https://github.com/OpenDataEnsemble/ode/issues
+    about: For Formulus, Synkronus, ODE Desktop, or CLI issues, please report them in the main monorepo.
+  - name: Community Forum
+    url: https://forum.opendataensemble.org
+    about: Ask questions, share ideas, and connect with the community.

@@ -1,0 +1,66 @@
+name: Bug report
+description: Report a bug, broken link, or visual defect on the website
+title: '[Bug]: '
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > **Note:** This repository is for the **ODE website** (`OpenDataEnsemble/website`).
+        > If you found an issue with Formulus (mobile), Synkronus (backend), ODE Desktop, or the CLI, please file it in the [main ODE monorepo](https://github.com/OpenDataEnsemble/ode/issues).
+        >
+        > For instructions on testing or running the site locally, see the README's [Run locally](https://github.com/OpenDataEnsemble/website#run-locally) section.
+
+  - type: input
+    id: page
+    attributes:
+      label: Page or URL
+      description: Which page, route, or component has the issue?
+      placeholder: e.g. /community, Homepage hero, or mobile navigation
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe what went wrong or did not work as expected.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Describe what should have happened.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can someone else observe this bug?
+      placeholder: |
+        1. Navigate to '...'
+        2. Click on '...'
+        3. Observe that ...
+    validations:
+      required: false
+
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and viewport / OS (if relevant)
+      description: Helpful for responsive, styling, or browser-specific rendering bugs.
+      placeholder: e.g. Safari on iOS 17, Chrome 124 on macOS (viewport 375px)
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or recordings
+      description: Paste or drag-and-drop images or video recordings if helpful.
+    validations:
+      required: false

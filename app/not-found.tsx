@@ -18,12 +18,7 @@ export default function NotFound() {
       </Link>
 
       <p className="page-section-link">
-        <a
-          className="inline-link"
-          href={DOCS}
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a className="inline-link" href={DOCS} target="_blank" rel="noreferrer">
           Documentation
         </a>
       </p>

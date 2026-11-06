@@ -17,31 +17,39 @@ export default function NotFound() {
         Back to the home page
       </Link>
 
-      <a
-        className="inline-link page-section-link"
-        href={DOCS}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Documentation
-      </a>
+      <p className="page-section-link">
+        <a
+          className="inline-link"
+          href={DOCS}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Documentation
+        </a>
+      </p>
 
-      <a
-        className="inline-link page-section-link"
-        href={DOWNLOADS}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Downloads
-      </a>
+      <p className="page-section-link">
+        <a
+          className="inline-link"
+          href={DOWNLOADS}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Downloads
+        </a>
+      </p>
 
-      <Link className="inline-link page-section-link" href="/community">
-        Community
-      </Link>
+      <p className="page-section-link">
+        <Link className="inline-link" href="/community">
+          Community
+        </Link>
+      </p>
 
-      <Link className="inline-link page-section-link" href="/contact">
-        Contact
-      </Link>
+      <p className="page-section-link">
+        <Link className="inline-link" href="/contact">
+          Contact
+        </Link>
+      </p>
     </section>
   );
 }

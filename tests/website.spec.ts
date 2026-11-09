@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
+import { FORUM } from '../src/site';
 
 const screenshotDirectory = '.preview';
 
@@ -333,6 +334,10 @@ test('404 page offers helpful recovery links', async ({ page }) => {
     'href',
     '/community/',
   );
+  const forum = main.getByRole('link', { name: 'Forum', exact: true });
+  await expect(forum).toHaveAttribute('href', FORUM);
+  await expect(forum).toHaveAttribute('target', '_blank');
+  await expect(forum).toHaveAttribute('rel', 'noreferrer');
   await expect(main.getByRole('link', { name: 'Contact' })).toHaveAttribute(
     'href',
     '/contact/',

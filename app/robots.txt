@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://opendataensemble.org/sitemap.xml
+Sitemap: https://opendataensemble.github.io/website/sitemap.xml

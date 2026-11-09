@@ -484,7 +484,7 @@ test('layouts do not overflow at phone, tablet, or desktop widths', async ({
 test('robots and sitemap expose the public site routes', async ({
   request,
 }) => {
-  const origin = 'https://opendataensemble.org';
+  const origin = 'https://opendataensemble.github.io/website';
 
   const robotsResponse = await request.get('/robots.txt');
   expect(robotsResponse.ok()).toBeTruthy();

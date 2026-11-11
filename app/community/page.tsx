@@ -16,6 +16,7 @@ import {
   GITHUB,
   GITHUB_CONTRIBUTING,
   GITHUB_ISSUES,
+  GITHUB_WEBSITE_ISSUES,
   docs,
 } from '../../src/site';
 
@@ -30,8 +31,8 @@ const waysToHelp = [
     label: 'CODE',
     title: 'Fix a bug or build a feature',
     description:
-      'Start with issues labelled “good first issue” or “help wanted”. For anything significant, open an issue and talk it through first.',
-    href: `${GITHUB_ISSUES}?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22`,
+      'Start with website issues labelled “good first issue” or “help wanted”. For anything significant, open an issue and talk it through first.',
+    href: `${GITHUB_WEBSITE_ISSUES}?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22`,
     cta: 'Good first issues',
   },
   {

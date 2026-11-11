@@ -1970,6 +1970,11 @@ h2,
 .page-section-link + .page-section-link {
   margin-top: var(--spacing-4);
 }
+
+.recovery-links {
+  display: grid;
+  justify-items: start;
+}
 .link-list {
   margin-top: var(--size-39);
   padding: 0;

@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
+import { FORUM } from '../src/site';
 
 const screenshotDirectory = '.preview';
 
@@ -292,6 +293,57 @@ const pages = [
   { name: 'Contact', path: '/contact', heading: /How to\s*reach us\./ },
 ];
 
+test('404 page offers helpful recovery links', async ({ page }) => {
+  const response = await page.goto('/this-page-does-not-exist');
+
+  expect(response?.status()).toBe(404);
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'This page is not here.' }),
+  ).toBeVisible();
+
+  const main = page.getByRole('main');
+
+  await expect(
+    main.getByRole('link', { name: 'Back to the home page' }),
+  ).toHaveAttribute('href', '/');
+
+  await expect(
+    main.getByRole('link', { name: 'Documentation' }),
+  ).toHaveAttribute('href', 'https://opendataensemble.org/docs');
+  await expect(
+    main.getByRole('link', { name: 'Documentation' }),
+  ).toHaveAttribute('target', '_blank');
+  await expect(
+    main.getByRole('link', { name: 'Documentation' }),
+  ).toHaveAttribute('rel', 'noreferrer');
+
+  await expect(main.getByRole('link', { name: 'Downloads' })).toHaveAttribute(
+    'href',
+    'https://opendataensemble.org/downloads',
+  );
+  await expect(main.getByRole('link', { name: 'Downloads' })).toHaveAttribute(
+    'target',
+    '_blank',
+  );
+  await expect(main.getByRole('link', { name: 'Downloads' })).toHaveAttribute(
+    'rel',
+    'noreferrer',
+  );
+
+  await expect(main.getByRole('link', { name: 'Community' })).toHaveAttribute(
+    'href',
+    '/community/',
+  );
+  const forum = main.getByRole('link', { name: 'Forum', exact: true });
+  await expect(forum).toHaveAttribute('href', FORUM);
+  await expect(forum).toHaveAttribute('target', '_blank');
+  await expect(forum).toHaveAttribute('rel', 'noreferrer');
+  await expect(main.getByRole('link', { name: 'Contact' })).toHaveAttribute(
+    'href',
+    '/contact/',
+  );
+});
+
 test('each page has its own title and heading', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
@@ -464,6 +516,7 @@ test('layouts do not overflow at phone, tablet, or desktop widths', async ({
     '/',
     ...pages.map((entry) => entry.path),
     '/community/kampala-2026',
+    '/this-page-does-not-exist',
   ]) {
     for (const width of [320, 375, 390, 680, 768, 1024, 1440]) {
       await page.setViewportSize({ width, height: 900 });

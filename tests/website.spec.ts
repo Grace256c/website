@@ -1,6 +1,11 @@
 import { expect, test } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
-import { FORUM } from '../src/site';
+import {
+  FORUM,
+  GITHUB_CONTRIBUTING,
+  GITHUB_ISSUES,
+  GITHUB_WEBSITE_ISSUES,
+} from '../src/site';
 
 const screenshotDirectory = '.preview';
 
@@ -191,6 +196,9 @@ test('header, footer, and product links match the docs site', async ({
     'href',
     'https://forum.opendataensemble.org',
   );
+  await expect(
+    footer.getByRole('link', { name: 'Contribute' }),
+  ).toHaveAttribute('href', GITHUB_CONTRIBUTING);
   await expect(footer.getByRole('link', { name: 'LinkedIn' })).toHaveAttribute(
     'href',
     'https://www.linkedin.com/company/opendataensemble',
@@ -232,10 +240,25 @@ test('header, footer, and product links match the docs site', async ({
     page.getByRole('link', { name: /Ask on the forum/ }),
   ).toHaveAttribute('href', 'https://forum.opendataensemble.org');
   await expect(
+    page.getByRole('link', { name: /Open an issue/ }),
+  ).toHaveAttribute('href', GITHUB_ISSUES);
+  await expect(
     page.getByRole('link', { name: /Help resources/ }),
   ).toHaveAttribute('href', `${origin}/docs/community/getting-help`);
 
   await page.goto('/community');
+  await expect(
+    page.getByRole('link', { name: /Good first issues/ }),
+  ).toHaveAttribute(
+    'href',
+    `${GITHUB_WEBSITE_ISSUES}?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22`,
+  );
+  await expect(
+    page.getByRole('link', { name: /Report an issue/ }),
+  ).toHaveAttribute('href', GITHUB_ISSUES);
+  await expect(
+    page.getByRole('link', { name: /Read the contributing guide/ }),
+  ).toHaveAttribute('href', GITHUB_CONTRIBUTING);
   await expect(
     page.getByRole('link', { name: /Browse examples/ }),
   ).toHaveAttribute('href', `${origin}/docs/community/examples`);

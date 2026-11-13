@@ -11,6 +11,7 @@ export const HELLO_EMAIL = 'hello@opendataensemble.org';
 export const GROUNDBREAKER = 'https://groundbreaker.org/';
 
 export const GITHUB_CONTRIBUTING = `${GITHUB_WEBSITE}/blob/main/CONTRIBUTING.md`;
+export const GITHUB_WEBSITE_ISSUES = `${GITHUB_WEBSITE}/issues`;
 export const GITHUB_ISSUES = `${GITHUB}/issues`;
 export const GITHUB_PORTAL = `${GITHUB}/tree/main/synkronus-portal`;
 

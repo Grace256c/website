@@ -25,6 +25,12 @@ Open <http://127.0.0.1:4173>. This serves the exported files in `out/` on loopba
 ## GitHub Pages
 
 `pnpm build` writes a static site to `out/`. GitHub Pages can serve that folder.
+**Current public URL:** The marketing website is currently served at
+[https://opendataensemble.github.io/website/](https://opendataensemble.github.io/website/).
+
+A custom domain (`opendataensemble.org`) may be configured for this website
+in the future. For now, `opendataensemble.org` already hosts the ODE
+documentation; it is not the current URL for this marketing website.
 
 1. In the GitHub repository, open **Settings → Pages**.
 2. Set **Source** to **GitHub Actions**.

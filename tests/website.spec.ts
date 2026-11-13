@@ -563,3 +563,46 @@ test('robots and sitemap expose the public site routes', async ({
     expect(sitemap).toContain(`<loc>${url}</loc>`);
   }
 });
+
+test('social previews share the static branded image', async ({
+  page,
+  request,
+}) => {
+  const imageUrl = 'https://opendataensemble.github.io/website/brand/og.png';
+
+  for (const path of ['/', '/about/']) {
+    await page.goto(path);
+    const og = (property: string) =>
+      page.locator(`meta[property="og:${property}"]`);
+    const twitter = (name: string) =>
+      page.locator(`meta[name="twitter:${name}"]`);
+
+    await expect(og('image')).toHaveAttribute('content', imageUrl);
+    await expect(og('image:width')).toHaveAttribute('content', '1200');
+    await expect(og('image:height')).toHaveAttribute('content', '630');
+    await expect(og('image:alt')).toHaveAttribute(
+      'content',
+      /Open Data Ensemble/,
+    );
+    await expect(twitter('card')).toHaveAttribute(
+      'content',
+      'summary_large_image',
+    );
+    await expect(twitter('image')).toHaveAttribute('content', imageUrl);
+    for (const field of ['title', 'description', 'image:alt']) {
+      await expect(twitter(field)).toHaveAttribute(
+        'content',
+        (await og(field).getAttribute('content'))!,
+      );
+    }
+  }
+
+  const response = await request.get('/brand/og.png');
+  expect(response.ok()).toBeTruthy();
+  expect(response.headers()['content-type']).toContain('image/png');
+  const image = await response.body();
+  expect(image.subarray(0, 8).toString('hex')).toBe('89504e470d0a1a0a');
+  expect(image.readUInt32BE(16)).toBe(1200);
+  expect(image.readUInt32BE(20)).toBe(630);
+  expect(image.length).toBeLessThan(300_000);
+});

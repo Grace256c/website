@@ -9,19 +9,36 @@ import BackToTop from '../src/BackToTop';
 import SiteFooter from '../src/SiteFooter';
 import SiteHeader from '../src/SiteHeader';
 
+const socialTitle = 'ODE · Open Data Ensemble';
+const socialDescription =
+  'Collect observations offline, sync them when a connection returns, and keep the data on infrastructure you control.';
+const socialImage = {
+  // Use the deployed Pages project URL, including its base path, in every build.
+  url: 'https://opendataensemble.github.io/website/brand/og.png',
+  width: 1200,
+  height: 630,
+  alt: 'Open Data Ensemble — Open-source field data tools. Good data. From the field. Offline.',
+};
+
 export const metadata: Metadata = {
   title: {
-    default: 'ODE · Open Data Ensemble',
+    default: socialTitle,
     template: '%s · ODE',
   },
   description:
     'Open-source tools for collecting and syncing field data when the network is unreliable. Formulus on the phone, Synkronus to bring observations together.',
   icons: { icon: '/brand/ode-mark.png' },
   openGraph: {
-    title: 'ODE · Open Data Ensemble',
-    description:
-      'Collect observations offline, sync them when a connection returns, and keep the data on infrastructure you control.',
+    title: socialTitle,
+    description: socialDescription,
     type: 'website',
+    images: [socialImage],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: socialTitle,
+    description: socialDescription,
+    images: [socialImage],
   },
 };
 
